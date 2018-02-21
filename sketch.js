@@ -1,6 +1,11 @@
+var resx = 1920;
+var resy = 1080;
 function setup() {
-  createCanvas(1366, 768);
+  createCanvas(resx, resy);
 }
+var sizeSq = 350;
+var sizeGapX = -(4*sizeSq-resx)/5;
+var sizeGapY = 30;
 
 var counterS = 0;
 var counterM = 3;
@@ -21,94 +26,96 @@ var c2P = "00";
 var show = true;
 
 function draw() {
-  background(0);
+  background(120);
+  noStroke();
+  textAlign(CENTER, CENTER);
   fill(gi1Color);
-  rect(40,40,200,200);
+  rect(sizeGapX, sizeGapY, sizeSq, sizeSq);
   if(g1P == 3){
     fill(255, 255, 0);
-    triangle(40,40, 40, 240, 240, 40);
+    triangle(sizeGapX, sizeGapY, sizeGapX, sizeGapY + sizeSq, sizeGapX + sizeSq, sizeGapY);
   }
-  fill(255, 255, 0);
-  rect(280,40,200,200);
-  textSize(180);
-  fill(0);
-  text(c1V, 280, 205);
-  fill(255, 0, 0);
-  rect(520, 40, 200, 200);
-  fill(0);
-  textSize(200);
-  text(c1[1], 565, 210);
   fill(255);
-  rect(760, 40, 200, 200);
+  rect(sizeGapX*2 + sizeSq, sizeGapY, sizeSq, sizeSq);
+  /*558, 30*/
+  textSize(sizeSq - 20);
   fill(0);
-  textSize(180);
-  text(c1P, 760, 205);
+  text(c1V, sizeGapX*2 + sizeSq + sizeSq/2,sizeGapY+sizeSq/2);
+  fill(255, 0, 0);
+  rect(sizeGapX*3 + sizeSq*2, sizeGapY, sizeSq, sizeSq);
+  fill(0);
+  textSize(sizeSq);
+  text(c1[1], sizeGapX*3 + sizeSq*2 + sizeSq/2, sizeGapY+sizeSq/2);
+  fill(255, 255,0);
+  rect(sizeGapX*4 + sizeSq*3, sizeGapY, sizeSq, sizeSq);
+  fill(0);
+  textSize(sizeSq - 20);
+  text(c1P,sizeGapX*4 + sizeSq*3 + sizeSq/2, sizeGapY+sizeSq/2);
   fill(gi2Color);
-  rect(40,280,200,200);
-  fill(255, 255, 0);
-  rect(280,280,200,200);
-  fill(0);
-  text(c2V, 280, 450);
-  fill(255, 0, 0);
-  rect(520, 280, 200, 200);
-  fill(0);
-  textSize(200);
-  text(c2[1], 565, 450);
+  rect(sizeGapX, sizeGapY*2 + sizeSq, sizeSq, sizeSq);
   fill(255);
-  rect(760, 280, 200, 200);
+  rect(sizeGapX*2 + sizeSq,sizeGapY*2 + sizeSq, sizeSq, sizeSq);
   fill(0);
-  textSize(180);
-  text(c2P, 760, 450);
+  text(c2V,  sizeGapX*2 + sizeSq + sizeSq/2, sizeGapY*2+sizeSq+sizeSq/2);
+  fill(255, 0, 0);
+  rect(sizeGapX*3 + sizeSq*2,sizeGapY*2 + sizeSq,sizeSq, sizeSq);
+  fill(0);
+  textSize(sizeSq);
+  text(c2[1], sizeGapX*3 + sizeSq*2 + sizeSq/2, sizeGapY*2+sizeSq+sizeSq/2);
+  fill(255, 255, 0);
+  rect(sizeGapX*4 + sizeSq*3,sizeGapY*2 + sizeSq, sizeSq, sizeSq);
+  fill(0);
+  textSize(sizeSq - 20);
+  text(c2P, sizeGapX*4 + sizeSq*3 + sizeSq/2, sizeGapY*2+sizeSq+sizeSq/2);
   if(show == true){
-    fill(255);
-  } else {
     fill(0);
+  } else {
+    fill(255);
   }
-  textSize(200);
-  text(mn, 510, 670);
-  text(sc, 750, 670);
+  textSize(350);
+  text(mn+":"+sc, 3*sizeGapX + 3*sizeSq + sizeGapX/2,(2*sizeGapY+2*sizeSq) + (resy - (2*sizeGapY+2*sizeSq))/2);
 }
 
 function mouseClicked(){
   var giColors = [[0, 0, 0], [255,255,255], [0,0,255], [255, 0, 0]]
-  if(mouseX > 40 && mouseX < 240 && mouseY > 40 && mouseY < 240){
+  if(mouseX > sizeGapX && mouseX < sizeGapX + sizeSq && mouseY > sizeGapY && mouseY < sizeGapY + sizeSq){
     g1P ++;
     if(g1P === 4){
       g1P = 0;
     }
     gi1Color = giColors[g1P];
-  }else if(mouseX > 40 && mouseX < 240 && mouseY > 280 && mouseY < 480){
+  }else if(mouseX > sizeGapX && mouseX < sizeGapX + sizeSq && mouseY > sizeGapY*2 + sizeSq && mouseY < sizeGapY*2 + sizeSq*2){
     g2P ++;
     if(g2P === 3){
       g2P = 0;
     }
     gi2Color = giColors[g2P];
-  }else if(mouseX > 280 && mouseX <480 && mouseY > 40 && mouseY < 240){
+  }else if(mouseX > sizeGapX*2 + sizeSq && mouseX < sizeGapX*2 + sizeSq * 2 && mouseY > sizeGapY && mouseY < sizeGapY + sizeSq){
     c1[0] ++;
     if(c1[0].toString().length == 1){
       c1V = "0" + c1[0].toString();
     }else{
       c1V = c1[0].toString();
     }
-  }else if(mouseX > 280 && mouseX <480 && mouseY > 280 && mouseY < 480){
+  }else if(mouseX > sizeGapX*2 + sizeSq && mouseX < sizeGapX*2 + sizeSq * 2 && mouseY > sizeGapY*2 + sizeSq && mouseY < sizeGapY*2 + sizeSq*2){
     c2[0] ++;
     if(c2[0].toString().length == 1){
       c2V = "0" + c2[0].toString();
     }else{
       c2V = c2[0].toString();
     }
-  }else if(mouseX > 520 && mouseX < 720 && mouseY > 40 && mouseY < 240){
+  }else if(mouseX > sizeGapX*3 + sizeSq*2 && mouseX < sizeGapX*3 + sizeSq * 3 && mouseY > sizeGapY && mouseY < sizeGapY + sizeSq){
     c1[1]++;
-  }else if(mouseX > 520 && mouseX < 720 && mouseY > 280 && mouseY < 480){
+  }else if(mouseX > sizeGapX*3 + sizeSq*2 && mouseX < sizeGapX*3 + sizeSq * 3 && mouseY > sizeGapY*2 + sizeSq && mouseY < sizeGapY*2 + sizeSq*2){
     c2[1]++;
-  }else if(mouseX > 760 && mouseX <960 && mouseY > 40 && mouseY < 240){
+  }else if(mouseX > sizeGapX*4 + sizeSq*3 && mouseX < sizeGapX*4 + sizeSq * 4 && mouseY > sizeGapY && mouseY < sizeGapY + sizeSq){
     c1[2] ++;
     if(c1[2].toString().length == 1){
       c1P = "0" + c1[2].toString();
     }else{
       c1P = c1[2].toString();
     }
-  }else if(mouseX > 760 && mouseX <960 && mouseY > 280 && mouseY < 480){
+  }else if(mouseX > sizeGapX*4 + sizeSq*3 && mouseX < sizeGapX*4 + sizeSq * 4 && mouseY > sizeGapY*2 + sizeSq && mouseY < sizeGapY*2 + sizeSq*2){
     c2[2] ++;
     if(c2[2].toString().length == 1){
       c2P = "0" + c2[2].toString();
@@ -165,7 +172,7 @@ function keyPressed(){
   }else if(keyCode == 40){
     if(count == false){
       counterM --;
-      if(counterM == 3){
+      if(counterM == 2){
         counterM = 10;
       }
       if(counterM.toString().length == 1){
