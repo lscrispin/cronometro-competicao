@@ -7,7 +7,6 @@ var sizeGapY;
 
 function setup() {
   createCanvas(displayWidth, displayHeight);
-  var fs = fullscreen();
   sizeSq = displayWidth * 0.19;
   sizeGapX = -(4*sizeSq - displayWidth)/5;
   sizeGapY = 0.027 * displayHeight;
@@ -50,7 +49,7 @@ function draw() {
   if(g1P == 3){
     noStroke();
     fill(255, 255, 0);
-    triangle(sizeGapX, sizeGapY, sizeGapX, sizeGapY + sizeSq, sizeGapX + sizeSq, sizeGapY);
+    triangle(sizeGapX + resx * 0.001, sizeGapY + resx * 0.001, sizeGapX  + resx * 0.001, sizeGapY + sizeSq  - resx * 0.001, sizeGapX + sizeSq  - resx * 0.001, sizeGapY  + resx * 0.001);
   }
   noStroke();
   fill(255);
