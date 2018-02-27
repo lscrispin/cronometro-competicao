@@ -1,17 +1,21 @@
-var resx = 1920;
-var resy = 1080;
+var resx;
+var resy;
 
-var img;
+var sizeSq;
+var sizeGapX;
+var sizeGapY;
 
 function setup() {
-  createCanvas(resx, resy);
+  createCanvas(displayWidth, displayHeight);
+  var fs = fullscreen();
+  sizeSq = displayWidth * 0.19;
+  sizeGapX = -(4*sizeSq - displayWidth)/5;
+  sizeGapY = 0.027 * displayHeight;
+  resx = displayWidth;
+  resy = displayHeight;
 }
-var sizeSq = 350;
-var sizeGapX = -(4*sizeSq-resx)/5;
-var sizeGapY = 30;
-
 var counterS = 0;
-var counterM = 3;
+var counterM = 2;
 
 var sc = "00";
 var mn = "02";
@@ -33,10 +37,9 @@ var c2 = [0,0,0];
 var show = true;
 
 function draw() {
-  textFont();
   background(0);
 
-  strokeWeight(4);
+  strokeWeight(resx * 0.002);
 
   stroke(255);
 
@@ -47,32 +50,32 @@ function draw() {
   if(g1P == 3){
     noStroke();
     fill(255, 255, 0);
-    triangle(sizeGapX+2, sizeGapY+2, sizeGapX+2, sizeGapY + sizeSq-1, sizeGapX + sizeSq-1, sizeGapY+2);
+    triangle(sizeGapX, sizeGapY, sizeGapX, sizeGapY + sizeSq, sizeGapX + sizeSq, sizeGapY);
   }
   noStroke();
   fill(255);
   rect(sizeGapX*2 + sizeSq, sizeGapY, sizeSq, sizeSq);
-  rect(sizeGapX + sizeSq + (sizeGapX - 50)/2, sizeGapY + sizeSq - 50, 50, 50);
+  rect(sizeGapX + sizeSq + (sizeGapX - resx * 0.02)/2, sizeGapY + sizeSq - resx * 0.02, resx * 0.02, resx * 0.02);
   /*558, 30*/
   fill(0);
-  textSize(55);
-  text("-", sizeGapX + sizeSq + sizeGapX/2, sizeGapY + sizeSq - 25);
-  textSize(sizeSq - 20);
+  textSize(resx * 0.0286);
+  text("-", sizeGapX + sizeSq + sizeGapX/2, sizeGapY + sizeSq - resx * 0.015);
+  textSize(sizeSq - resx * 0.0104);
   text(c1[0], sizeGapX*2 + sizeSq + sizeSq/2,sizeGapY+sizeSq/2);
   fill(255, 0, 0);
   rect(sizeGapX*3 + sizeSq*2, sizeGapY, sizeSq, sizeSq);
-  rect(sizeGapX*2 + sizeSq*2 + (sizeGapX - 50)/2, sizeGapY + sizeSq - 50, 50, 50);
+  rect(sizeGapX*2 + sizeSq*2 + (sizeGapX - resx * 0.02)/2, sizeGapY + sizeSq - resx * 0.02, resx * 0.02, resx * 0.02);
   fill(0);
   text(c1[1], sizeGapX*3 + sizeSq*2 + sizeSq/2, sizeGapY+sizeSq/2);
-  textSize(55);
-  text("-", sizeGapX*2 + sizeSq*2 + sizeGapX/2, sizeGapY + sizeSq - 25);
+  textSize(resx * 0.0286);
+  text("-", sizeGapX*2 + sizeSq*2 + sizeGapX/2, sizeGapY + sizeSq - resx * 0.015);
   fill(255, 255,0);
   rect(sizeGapX*4 + sizeSq*3, sizeGapY, sizeSq, sizeSq);
-  rect(sizeGapX*3 + sizeSq*3 + (sizeGapX - 50)/2, sizeGapY + sizeSq - 50, 50, 50);
+  rect(sizeGapX*3 + sizeSq*3 + (sizeGapX - resx * 0.02)/2, sizeGapY + sizeSq - resx * 0.02, resx * 0.02, resx * 0.02);
   fill(0);
-  textSize(55);
-  text("-", sizeGapX*3 + sizeSq*3 + sizeGapX/2, sizeGapY + sizeSq - 25);
-  textSize(sizeSq - 20);
+  textSize(resx * 0.0286);
+  text("-", sizeGapX*3 + sizeSq*3 + sizeGapX/2, sizeGapY + sizeSq - resx * 0.015);
+  textSize(sizeSq - resx * 0.01);
   text(c1[2],sizeGapX*4 + sizeSq*3 + sizeSq/2, sizeGapY+sizeSq/2);
   fill(gi2Color);
   stroke(255);
@@ -89,37 +92,37 @@ function draw() {
   fill(255, 255, 0);
   rect(sizeGapX*4 + sizeSq*3,sizeGapY*2 + sizeSq, sizeSq, sizeSq);
   fill(0);
-  textSize(sizeSq - 20);
+  textSize(sizeSq - resx * 0.028);
   text(c2[2], sizeGapX*4 + sizeSq*3 + sizeSq/2, sizeGapY*2+sizeSq+sizeSq/2);
   fill(255);
-  rect(sizeGapX + sizeSq + (sizeGapX - 50)/2, sizeGapY*2 + sizeSq*2 - 50, 50, 50);
+  rect(sizeGapX + sizeSq + (sizeGapX - resx*0.02)/2, sizeGapY*2 + sizeSq*2 - resx*0.02, resx*0.02, resx*0.02);
   fill(255,0,0);
-  rect(sizeGapX*2 + sizeSq*2 + (sizeGapX - 50)/2, sizeGapY*2 + sizeSq*2 - 50, 50, 50);
+  rect(sizeGapX*2 + sizeSq*2 + (sizeGapX - resx*0.02)/2, sizeGapY*2 + sizeSq*2 - resx*0.02, resx*0.02, resx*0.02);
   fill(255,255,0);
-  rect(sizeGapX*3 + sizeSq*3 + (sizeGapX - 50)/2, sizeGapY*2 + sizeSq*2 - 50, 50, 50);
+  rect(sizeGapX*3 + sizeSq*3 + (sizeGapX - resx*0.02)/2, sizeGapY*2 + sizeSq*2 - resx*0.02, resx*0.02, resx*0.02);
   fill(0);
-  textSize(55);
-  text("-", sizeGapX + sizeSq + sizeGapX/2, sizeGapY*2 + sizeSq*2 - 25);
-  text("-", sizeGapX*2 + sizeSq*2 + sizeGapX/2, sizeGapY*2 + sizeSq*2 - 25);
-  text("-", sizeGapX*3 + sizeSq*3 + sizeGapX/2, sizeGapY*2 + sizeSq*2 - 25);
+  textSize(resx * 0.028);
+  text("-", sizeGapX + sizeSq + sizeGapX/2, sizeGapY*2 + sizeSq*2 - resx * 0.015);
+  text("-", sizeGapX*2 + sizeSq*2 + sizeGapX/2, sizeGapY*2 + sizeSq*2 - resx * 0.015);
+  text("-", sizeGapX*3 + sizeSq*3 + sizeGapX/2, sizeGapY*2 + sizeSq*2 - resx * 0.015);
   if(show){
     fill(255);
   } else {
     fill(0);
   }
-  textSize(350);
+  textSize(resx * 0.18);
   text(mn+":"+sc, 3*sizeGapX + 3*sizeSq + sizeGapX/2,(2*sizeGapY+2*sizeSq) + (resy - (2*sizeGapY+2*sizeSq))/2);
-  textSize(280);
+  textSize(resx * 0.145);
   fill(0);
   stroke(255);
   strokeWeight(10);
   text("AEJJB", sizeGapX + sizeSq + sizeGapX/2, (2*sizeGapY+2*sizeSq) + (resy - (2*sizeGapY+2*sizeSq))/2 - sizeGapY);
   noStroke();
   fill(255, 0, 0);
-  rect( 2*sizeGapX + sizeSq -100, 2*sizeSq + 2*sizeGapY+250, 100, 50);
-  textSize(25);
+  rect( 2*sizeGapX + sizeSq -resx * 0.052, (2*sizeGapY+2*sizeSq) + (resy - (2*sizeGapY+2*sizeSq))/2 - sizeGapY + (resx * 0.145)/2, resx*0.0521, resx * 0.02);
+  textSize(resx*0.015);
   fill(255);
-  text("RESET",  2*sizeGapX + sizeSq -50, 2*sizeSq + 2*sizeGapY+275);
+  text("RESET",  2*sizeGapX + sizeSq - resx * 0.026, (2*sizeGapY+2*sizeSq) + (resy - (2*sizeGapY+2*sizeSq))/2 - sizeGapY + (resx * 0.145)/2 + (resx * 0.02)/2);
 }
 
 function mouseClicked(){
@@ -148,7 +151,7 @@ function mouseClicked(){
     c1[2] ++;
   }else if(mouseX > sizeGapX*4 + sizeSq*3 && mouseX < sizeGapX*4 + sizeSq * 4 && mouseY > sizeGapY*2 + sizeSq && mouseY < sizeGapY*2 + sizeSq*2){
     c2[2] ++;
-  }else if(mouseX > 2 * sizeGapX + sizeSq -100 && mouseX <  2 * sizeGapX + sizeSq && mouseY > 2 * sizeSq + 2 * sizeGapY + 250 && mouseY < 2 * sizeSq + 2 * sizeGapY + 300){
+  }else if(mouseX > 2*sizeGapX + sizeSq -resx * 0.052 && 2*sizeGapX + sizeSq && mouseY > (2*sizeGapY+2*sizeSq) + (resy - (2*sizeGapY+2*sizeSq))/2 - sizeGapY + (resx * 0.145)/2 && mouseY < (2*sizeGapY+2*sizeSq) + (resy - (2*sizeGapY+2*sizeSq))/2 - sizeGapY + (resx * 0.145)/2 +  resx * 0.02){
     if(!count || (!ready && counterM === 0 && counterS === 0) || ready){
       counterS = 0;
       counterM = 2;
