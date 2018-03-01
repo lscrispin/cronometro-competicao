@@ -2,6 +2,7 @@ Placar para competição da AEBJJ
 Feito por Lucas Crispin
 
 Instruções de instalação:
+
   1 - Descompactar a pasta com os arquivos do placar
   
   2 - Colocar a pasta no local desejado
@@ -9,6 +10,7 @@ Instruções de instalação:
   3 - Criar um atalho para área de trabalho
   
 Instruções de uso:
+
   1 - Abrir o atalho na área de trabalho
   
   2 - Colocar o navegador em tela cheia (geralmete a tecla F11)
