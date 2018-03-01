@@ -1,4 +1,4 @@
-Placar para competição da AEBJJ
+Placar para competição da AEJJB
 Feito por Lucas Crispin
 
 Instruções de instalação:
